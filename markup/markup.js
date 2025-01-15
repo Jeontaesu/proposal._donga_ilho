@@ -26,7 +26,7 @@ $(function () {
         str += `<div class="depth_3">${a.depth3 ? a.depth3 : ""}</div>`;
         str += `<div class="info">${a.info ? a.info : ""}</div>`;
         // str += `<div class="fileName"><a href="../html/${a.src.split("?")[0]}.html${a.src.split("?")[1] ? `?` + a.src.split("?")[1] : ""}" target="_blank" >${a.src.split("?")[0]}</a></div>`;
-        str += `<div class="fileName"><a href="${a.src === 'main' ? 'main/main.html' : `html/${a.src.split("?")[0]}.html${a.src.split("?")[1] ? `?` + a.src.split("?")[1] : ""}`}" target="_blank">${a.src.split("?")[0]}</a></div>`;
+        str += `<div class="fileName"><a href="${a.src === "main" ? "main.html" : `html/${a.src.split("?")[0]}.html${a.src.split("?")[1] ? `?` + a.src.split("?")[1] : ""}`}" target="_blank">${a.src.split("?")[0]}</a></div>`;
         str += `</li>`;
       });
       str += `</ul>`;
@@ -35,13 +35,10 @@ $(function () {
     });
     $("#totalCnt").html(pageCnt);
     $("#endCnt").html($(".sub:not(.guide) .end").length);
-    $("#endCntP").html(
-      (($(".sub:not(.guide) .end").length / pageCnt) * 100).toFixed(1)
-    );
+    $("#endCntP").html((($(".sub:not(.guide) .end").length / pageCnt) * 100).toFixed(1));
     $("#depth1Cnt").text(markupPcList.length - 1); //공통 제외
     $(".sub").each(function (i) {
-      if ($(this).find("li").length == $(this).find(".end").length)
-        $(this).parent().addClass("allEnd");
+      if ($(this).find("li").length == $(this).find(".end").length) $(this).parent().addClass("allEnd");
     });
   });
 

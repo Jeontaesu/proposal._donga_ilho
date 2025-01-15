@@ -1,1 +1,0 @@
-{"version":3,"sources":["pages/_main.scss"],"names":[],"mappings":"AAAA,GACE,MAAA,QACA,UAAA,OACA,YAAA","file":"style.css","sourcesContent":["h1{\r\n  color: $color-primary;\r\n  font-size: 2.2rem;\r\n  font-weight:700;\r\n}"]}

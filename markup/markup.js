@@ -25,7 +25,8 @@ $(function () {
         str += `<div class="depth_2">${a.depth2 ? a.depth2 : ""}</div>`;
         str += `<div class="depth_3">${a.depth3 ? a.depth3 : ""}</div>`;
         str += `<div class="info">${a.info ? a.info : ""}</div>`;
-        str += `<div class="fileName"><a href="../html/${a.src.split("?")[0]}.html${a.src.split("?")[1] ? `?` + a.src.split("?")[1] : ""}" target="_blank" >${a.src.split("?")[0]}</a></div>`;
+        // str += `<div class="fileName"><a href="../html/${a.src.split("?")[0]}.html${a.src.split("?")[1] ? `?` + a.src.split("?")[1] : ""}" target="_blank" >${a.src.split("?")[0]}</a></div>`;
+        str += `<div class="fileName"><a href="${a.src === 'main' ? 'main/main.html' : `../html/${a.src.split("?")[0]}.html${a.src.split("?")[1] ? `?` + a.src.split("?")[1] : ""}`}" target="_blank">${a.src.split("?")[0]}</a></div>`;
         str += `</li>`;
       });
       str += `</ul>`;

@@ -1,1 +1,1 @@
-{"version":3,"sources":["file:/C:/Users/FRAMEOUT/Desktop/git-mefloweb/proposal._donga_ilho/src/scss/pages/_main.scss"],"names":[],"mappings":"AAAA,GACE,MAAA","file":"style.css","sourcesContent":["h1{\r\n  color: $color-primary;\r\n}"]}
+{"version":3,"sources":["pages/_main.scss"],"names":[],"mappings":"AAAA,GACE,MAAA","file":"style.css","sourcesContent":["h1{\r\n  color: $color-primary;\r\n}"]}

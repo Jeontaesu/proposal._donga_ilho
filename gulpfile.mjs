@@ -1,5 +1,6 @@
 // Gulpfile.mjs
-import { src, dest, series, parallel, watch } from 'gulp';
+import gulp from 'gulp';
+const { src, dest, series, parallel, watch } = gulp;
 import clean from 'gulp-clean';
 import htmlmin from 'gulp-htmlmin';
 import fileinclude from 'gulp-file-include';

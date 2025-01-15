@@ -8,8 +8,8 @@
 
 
 // layout
-@import 'layouts/header';
-@import 'layouts/footer';
+@use 'include/header';
+@use 'include/footer';
 
 @import 'pages/main';
 

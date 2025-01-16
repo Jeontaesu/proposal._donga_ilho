@@ -9,30 +9,242 @@
   <meta name="format-detection" content="telephone=no"><!-- <link rel="icon" href="../static/images/ico/ico_favicon.svg"> -->
   <title>동아 일호재단</title><!-- css -->
   <link rel="stylesheet" type="text/css" href="/css/style.css">
-  <link rel="stylesheet" type="text/css" href="/css/library.css"><!--//css --><!-- srcipt -->
+  <link rel="stylesheet" type="text/css" href="/css/library.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"><!--//css --><!-- srcipt -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script><!-- <script src="../static/js/swiper.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script src="../js/lib/gsap.min.js"></script>
   <script src="../js/lib/ScrollTrigger.min.js"></script>
   <script src="../js/main.js"></script><!--//srcipt -->
 </head>
 
 <body>
-  <div id="wrap" class="main1">
+  <div id="wrap" class="main">
     <header id="header" class="header">
       <div class="header__inner">
-        <h1 class="logo"><a href="main.html"></a></h1>
+        <h1 class="header__logo"><span class="blind">일호재단 로고</span> <a href="main.html"><svg xmlns="http://www.w3.org/2000/svg" width="220" height="40" viewBox="0 0 220 40" fill="none">
+              <g clip-path="url(#clip0_111_300)">
+                <path d="M81.7098 10.385C81.7098 6.04675 85.4029 2.36146 90.8943 2.36146C96.3856 2.36146 100.079 6.04237 100.079 10.385C100.079 14.7276 96.3812 18.4085 90.8943 18.4085C85.4073 18.4085 81.7098 14.7276 81.7098 10.385ZM111.492 36.8963H85.038V26.6467H105.895V24.6047H85.038V20.4461H110.943V30.5861H90.0853V32.7377H111.492V36.8963ZM95.0622 10.385C95.0622 8.23339 93.3783 6.48495 90.8899 6.48495C88.4014 6.48495 86.7175 8.23777 86.7175 10.385C86.7175 12.5322 88.4014 14.285 90.8899 14.285C93.3783 14.285 95.0622 12.5365 95.0622 10.385ZM110.943 18.7722H105.891V2.1818H110.943V18.7722Z" fill="#231F20" />
+                <path d="M147.003 34.9298H116.122V30.5915H129.039V26.9106C124.357 26.1087 121.938 22.9361 121.938 19.3954C121.938 15.2763 125.232 11.6655 131.527 11.6655C137.823 11.6655 141.112 15.2763 141.112 19.3954C141.112 22.9318 138.698 26.0693 134.086 26.9106V30.5915H147.003V34.9298ZM144.955 10.6051H118.171V6.44654H129.039V2.03383H134.091V6.44654H144.959V10.6051H144.955ZM136.175 19.3954C136.175 17.3184 134.565 15.7496 131.527 15.7496C128.489 15.7496 126.88 17.3534 126.88 19.3954C126.88 21.4375 128.489 23.0413 131.527 23.0413C134.565 23.0413 136.175 21.398 136.175 19.3954Z" fill="#231F20" />
+                <path d="M150.34 26.2479C153.928 25.1524 156.232 21.9097 156.232 16.5461V8.67159H150.855V4.32899H166.66V8.66721H161.283V16.5461C161.283 21.9053 163.587 25.1524 167.175 26.2479V30.7351C163.407 29.7886 160.369 27.5976 158.76 24.1358C157.15 27.5976 154.112 29.7886 150.345 30.7351V26.2479H150.34ZM182.171 36.8218H177.23V19.0263H173.752V36.6027H168.885V2.47101H173.752V14.6881H177.19V2.1818H182.167V36.8262L182.171 36.8218Z" fill="#231F20" />
+                <path d="M187.165 3.30798H204.62V7.64619H192.217V16.6907C196.57 16.8003 203.011 16.3971 207.548 15.1964V19.4251C202.936 20.7397 194.851 21.3576 187.17 20.9939V3.30798H187.165ZM215.084 36.4581H190.388V24.1665H195.435V32.1549H215.084V36.4581ZM214.644 27.2689H209.597V2.1818H214.644V11.2964H219.546V15.6346H214.644V27.2689Z" fill="#231F20" />
+                <path d="M20.7065 39.9913C19.4096 39.9913 18.5302 39.9037 18.328 39.8817C17.5234 39.8029 7.43764 38.6592 2.70251 30.4297C-0.0145857 25.7102 -0.35752 19.273 2.16173 14.5448C3.12458 12.735 4.3864 11.1969 5.92521 9.95683C6.46159 9.52301 7.25737 9.64133 7.63108 10.2198L9.49524 13.1338C9.7986 13.6115 9.71507 14.2468 9.27981 14.6106C8.33014 15.3993 7.54315 16.3765 6.93642 17.5202C5.24374 20.706 5.33606 24.6717 7.17824 27.8706C10.6559 33.9134 18.7545 34.7548 18.838 34.7635L18.9039 34.7723C18.9347 34.7723 22.7554 35.193 26.6244 34.0536C27.3454 33.8433 28.0181 33.5935 28.6424 33.3043C21.9156 30.8723 17.8971 26.4596 15.6153 22.8751C12.7575 18.3879 11.9837 14.2556 11.9002 13.7867C10.4097 5.75446 13.7292 2.43726 15.8395 1.17086C20.9967 -1.90971 27.4465 2.01221 28.1412 2.45479C41.4277 10.4301 39.7658 24.9215 39.691 25.535C38.8381 32.4016 34.7712 37.0729 27.9214 39.0316C25.1823 39.816 22.5355 39.9913 20.7109 39.9913M20.3196 5.1366C19.6558 5.1366 19.027 5.26368 18.4907 5.58356C16.8463 6.56514 16.2924 9.22065 16.9738 12.8665L16.9826 12.9235C17.075 13.4668 19.3876 26.1397 33.1885 29.2816C33.9051 28.0327 34.3624 26.5735 34.569 24.8952C34.6261 24.4175 35.844 13.0549 25.4505 6.83683L25.3625 6.77986C24.536 6.24963 22.2849 5.12783 20.3196 5.12783" fill="#EF3B3D" />
+                <mask id="mask0_111_300" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="20" y="24" width="14" height="10">
+                  <path d="M33.6324 28.4074C33.7379 28.2014 33.8214 28.0393 33.8258 28.0261C33.8258 28.0349 33.7687 28.1445 33.6324 28.4074ZM20.658 28.013L20.2447 28.3285C22.4079 30.2566 25.1601 32.0445 28.6422 33.2977C28.6422 33.2977 31.755 32.1058 33.1883 29.2794C29.2358 28.3811 26.2285 26.6984 23.9423 24.7396L20.6624 28.0086L20.658 28.013Z" fill="white" />
+                </mask>
+                <g mask="url(#mask0_111_300)">
+                  <path d="M23.862 18.7581L16.4448 31.0178L30.2023 39.2861L37.6195 27.0264L23.862 18.7581Z" fill="url(#paint0_linear_111_300)" />
+                </g>
+                <path d="M46.0531 39.9912C47.3501 39.9912 48.2295 39.9036 48.4317 39.8817C49.2363 39.8028 59.3221 38.6591 64.0572 30.4296C66.7743 25.7146 67.1172 19.2774 64.598 14.5448C63.6395 12.7437 62.3821 11.21 60.8477 9.96992C60.3025 9.52734 59.4935 9.65003 59.1154 10.2416L57.3568 12.9891C56.9963 13.5544 57.1062 14.295 57.6118 14.7332C58.4999 15.5044 59.2429 16.4378 59.8189 17.5289C61.5116 20.7147 61.4192 24.6804 59.5815 27.8793C56.1037 33.9221 48.0052 34.7635 47.9217 34.7722L47.8557 34.781C47.825 34.781 44.0043 35.2017 40.1397 34.0623C39.4187 33.852 38.746 33.6022 38.1217 33.313C44.8485 30.881 48.867 26.4683 51.1488 22.8838C54.0066 18.3966 54.7804 14.2643 54.8639 13.7954C56.3544 5.76317 53.0349 2.44597 50.9246 1.17956C45.7674 -1.90101 39.3176 2.02091 38.6229 2.4635C25.3364 10.4388 26.9983 24.9302 27.0731 25.5437C27.926 32.4103 31.9928 37.0816 38.8427 39.0403C41.5818 39.8247 44.2286 40 46.0531 40M46.4444 5.1453C47.1083 5.1453 47.737 5.27238 48.269 5.59227C49.9134 6.57384 50.4673 9.22936 49.7858 12.8752L49.7771 12.9322C49.6847 13.4755 47.3721 26.1484 33.5712 29.2903C32.8546 28.0414 32.3973 26.5822 32.1907 24.9039C32.1335 24.4263 30.9157 13.0636 41.3092 6.84553L41.3972 6.78856C42.2237 6.25834 44.4748 5.13654 46.4444 5.13654" fill="#EF3B3D" />
+                <mask id="mask1_111_300" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="32" y="24" width="15" height="10">
+                  <path d="M33.1315 28.4073C32.9908 28.1356 32.938 28.0261 32.938 28.0261C32.938 28.0261 33.0215 28.1926 33.1315 28.4073ZM33.5755 29.2837C35.0088 32.1101 38.1216 33.3021 38.1216 33.3021C41.5993 32.0444 44.3516 30.2609 46.5191 28.3328L46.1058 28.0173L42.8259 24.7483C40.5397 26.7027 37.5324 28.3854 33.5799 29.2881" fill="white" />
+                </mask>
+                <g mask="url(#mask1_111_300)">
+                  <path d="M42.9014 18.7622L29.1439 27.0305L36.5633 39.2939L50.3208 31.0256L42.9014 18.7622Z" fill="url(#paint1_linear_111_300)" />
+                </g>
+                <mask id="mask2_111_300" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="27" y="10" width="7" height="12">
+                  <path d="M27.7681 17.0207L31.9889 20.8243L32.2395 21.2099C32.5121 18.515 33.3782 16.3108 33.3782 16.3108C32.0592 12.8315 30.2346 10.8771 30.2346 10.8771C28.432 13.9533 27.7681 17.0251 27.7681 17.0251" fill="white" />
+                </mask>
+                <g mask="url(#mask2_111_300)">
+                  <path d="M28.5506 8.93683L24.1877 19.7704L32.6051 23.1379L36.968 12.3043L28.5506 8.93683Z" fill="url(#paint2_linear_111_300)" />
+                </g>
+                <mask id="mask3_111_300" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="24" y="32" width="10" height="8">
+                  <path d="M24.6287 34.5159L26.04 39.4808C30.8806 38.5912 33.3867 36.5053 33.3867 36.5053C31.1884 35.2214 29.6847 32.785 29.6847 32.785C27.4952 34.0032 24.6331 34.5115 24.6331 34.5115" fill="white" />
+                </mask>
+                <g mask="url(#mask3_111_300)">
+                  <path d="M32.6843 30.421L22.8101 33.3157L25.326 41.8413L35.2002 38.9467L32.6843 30.421Z" fill="url(#paint3_linear_111_300)" />
+                </g>
+              </g>
+              <defs>
+                <linearGradient id="paint0_linear_111_300" x1="32.3904" y1="33.1279" x2="20.7319" y2="26.0744" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#A70E13" />
+                  <stop offset="1" stop-color="#EF3B3D" />
+                </linearGradient>
+                <linearGradient id="paint1_linear_111_300" x1="34.3588" y1="33.0194" x2="46.0174" y2="25.9659" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#A70E13" />
+                  <stop offset="1" stop-color="#EF3B3D" />
+                </linearGradient>
+                <linearGradient id="paint2_linear_111_300" x1="31.8481" y1="12.9857" x2="28.4968" y2="21.3626" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#A70E13" />
+                  <stop offset="1" stop-color="#EF3B3D" />
+                </linearGradient>
+                <linearGradient id="paint3_linear_111_300" x1="30.9957" y1="36.3536" x2="24.8576" y2="38.1649" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#A70E13" />
+                  <stop offset="1" stop-color="#EF3B3D" />
+                </linearGradient>
+                <clipPath id="clip0_111_300">
+                  <rect width="219.091" height="40" fill="white" transform="translate(0.454544)" />
+                </clipPath>
+              </defs>
+            </svg></a></h1>
         <nav class="gnb">
           <ul class="gnb__list">
             <li class="gnb__item"><a href="">일호재단</a></li>
             <li class="gnb__item"><a href="">사업소개</a></li>
-            <li class="gnb__item"><a href="">커뮤니티11</a></li>
+            <li class="gnb__item"><a href="">커뮤니티</a></li>
           </ul>
         </nav>
-        <div class="header__right"><button class="btn-spon"><span>후원하기</span></button> <button class="btn-menu"><img src="../../images/hamburger.png" alt="전체메뉴"></button></div>
+        <div class="header__right"><button class="btn-spon"><span>후원하기</span></button> <button class="btn-menu"><img src="../images/hamburger.png" alt="전체메뉴"></button></div>
       </div>
-    </header>2222<footer id="footer">footer</footer>
+    </header>
+    <section class="sc__ilho">
+      <div class="sc__bg"><img src="../images/bg1.png" alt></div>
+      <div class="sc__area">
+        <div class="ilhoFoundation"><span class="ilho"><img src="../images/ilho.png" alt="ILHO"> </span><span class="foundation"><img src="../images/foundation.png" alt="Foundation"></span></div>
+      </div>
+    </section>
+    <main class="sc">
+      <section class="sc__start">
+        <div class="sc__bg"><img src="../images/bg2.png" alt></div>
+        <div class="sc__area">
+          <div class="sc__area-title"><i class="titleDeco"><img src="../images/i7.png" alt></i>
+            <h2 class="title">어린이를 향한<br>따뜻한 마음의 시작</h2>
+            <p class="desc">어린이들의 꿈과 미래를 향한 첫걸음.<br>더 나은 사회발전을 위해 노력하겠습니다.</p>
+          </div><i class="obj1"><img src="../images/obj1.png" alt> </i><i class="obj2"><img src="../images/obj2.png" alt> </i><i class="obj3"><img src="../images/obj3.png" alt> </i><i class="obj4"><img src="../images/obj4.png" alt> </i><i class="deco1"><img src="../images/i3.png" alt> </i><i class="deco2"><img src="../images/i4.png" alt> </i><i class="deco3"><img src="../images/i5.png" alt> </i><i class="deco4"><img src="../images/i6.png" alt> </i><i class="deco5"><img src="../images/i8.png" alt></i>
+        </div>
+      </section><!-- //sc__start -->
+      <section class="sc__business">
+        <div class="sc__bg"><img src="../images/bg3.png" alt></div>
+        <div class="sc__area">
+          <div class="sc__area-title">
+            <h2><span class="img-wrap"><img src="../images/business.png" alt></span><span class="img-wrap"><img src="../images/introduction.png" alt></span></h2>
+            <p class="desc"><span class="bg">어린이들의 꿈과 가치를</span> 실현시키기 위해<br>다양한 사회공헌 활동을 실천합니다</p>
+          </div><i class="deco1"><img src="../images/i9.png" alt> </i><i class="deco2"><img src="../images/i10.png" alt> </i><i class="deco3"><img src="../images/i11.png" alt> </i><i class="deco4"><img src="../images/i12.png" alt></i>
+        </div>
+      </section><!-- //sc__business -->
+      <section class="sc__backup">
+        <div class="sc__bg"><img src="../images/bg4.png" alt></div>
+        <ul class="backup__list">
+          <li class="backup__item">
+            <div class="obj"><i class="obj1"><img src="../images/i13.png" alt></i><i class="obj2"><img src="../images/i14.png" alt></i><i class="obj3"><img src="../images/i15.png" alt></i><i class="obj4"><img src="../images/i16.png" alt></i></div>
+            <div class="memo">
+              <div class="memo__content">
+                <h3 class="title">치료지원</h3>
+                <p class="desc">소아환우가 제때 치료를 받아 치료가 장기화 되지 않도록 돕습니다</p><button class="btn-more"><span>자세히 보기</span></button>
+              </div><i class="deco"><img src="../images/i17.png" alt></i>
+            </div>
+          </li>
+          <li class="backup__item">
+            <div class="obj"><i class="obj1"><img src="../images/i19.png" alt></i><i class="obj2"><img src="../images/i20.png" alt></i><i class="obj3"><img src="../images/i21.png" alt></i></div>
+            <div class="memo">
+              <div class="memo__content">
+                <h3 class="title">재활지원</h3>
+                <p class="desc">소아환우가 제때 치료를 받아 치료가 장기화 되지 않도록 돕습니다</p><button class="btn-more"><span>자세히 보기</span></button>
+              </div><i class="deco"><img src="../images/i18.png" alt></i>
+            </div>
+          </li>
+          <li class="backup__item">
+            <div class="obj"><i class="obj1"><img src="../images/i23.png" alt></i><i class="obj2"><img src="../images/i24.png" alt></i><i class="obj3"><img src="../images/i25.png" alt></i><i class="obj4"><img src="../images/i26.png" alt></i></div>
+            <div class="memo">
+              <div class="memo__content">
+                <h3 class="title">연구지원</h3>
+                <p class="desc">소아환우가 제때 치료를 받아 치료가 장기화 되지 않도록 돕습니다</p><button class="btn-more"><span>자세히 보기</span></button>
+              </div><i class="deco"><img src="../images/i27.png" alt></i>
+            </div>
+          </li>
+        </ul>
+      </section><!-- //sc__backup -->
+      <section class="sc__news">
+        <div class="sc__bg"><img src="../images/bg5.png" alt></div>
+        <div class="sc__area">
+          <div class="sc__news-title">
+            <h2 class="title"><span><img src="../images/news.png" alt></span></h2>
+            <p class="desc">일호재단의 새로운 소식을 확인하세요</p>
+          </div>
+          <div class="owl-carousel owl-theme sc__news-banner">
+            <div class="card">
+              <div class="card__content"><span class="date">2023.08.07</span>
+                <div class="img-wrap"><img src="../images/swipe_img1.jpg" alt></div>
+                <h3 class="title">제37회 마로니에 전국여성발명장 후원</h3>
+                <p class="desc">2019년 10월 11일 서울 종로구 마로니에공원에서 열린 '제37회 마로니에 전국여성 백일장'이 성황리에 마무리 되었2019년 10월 11일 서울 종로구 마로니에공원에서 열린 '제37회 마로니에 전국여성 백일장'이 성황리에 마무리 되었</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card__content"><span class="date">2023.08.07</span>
+                <div class="img-wrap"><img src="../images/swipe_img2.jpg" alt></div>
+                <h3 class="title">제37회 마로니에 전국여성발명장 후원</h3>
+                <p class="desc">2019년 10월 11일 서울 종로구 마로니에공원에서 열린 '제37회 마로니에 전국여성 백일장'이 성황리에 마무리 되었2019년 10월 11일 서울 종로구 마로니에공원에서 열린 '제37회 마로니에 전국여성 백일장'이 성황리에 마무리 되었</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card__content"><span class="date">2023.08.07</span>
+                <div class="img-wrap"><img src="../images/swipe_img3.jpg" alt></div>
+                <h3 class="title">제37회 마로니에 전국여성발명장 후원</h3>
+                <p class="desc">2019년 10월 11일 서울 종로구 마로니에공원에서 열린 '제37회 마로니에 전국여성 백일장'이 성황리에 마무리 되었2019년 10월 11일 서울 종로구 마로니에공원에서 열린 '제37회 마로니에 전국여성 백일장'이 성황리에 마무리 되었</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card__content"><span class="date">2023.08.07</span>
+                <div class="img-wrap"><img src="../images/swipe_img1.jpg" alt></div>
+                <h3 class="title">제37회 마로니에 전국여성발명장 후원</h3>
+                <p class="desc">2019년 10월 11일 서울 종로구 마로니에공원에서 열린 '제37회 마로니에 전국여성 백일장'이 성황리에 마무리 되었2019년 10월 11일 서울 종로구 마로니에공원에서 열린 '제37회 마로니에 전국여성 백일장'이 성황리에 마무리 되었</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card__content"><span class="date">2023.08.07</span>
+                <div class="img-wrap"><img src="../images/swipe_img2.jpg" alt></div>
+                <h3 class="title">제37회 마로니에 전국여성발명장 후원</h3>
+                <p class="desc">2019년 10월 11일 서울 종로구 마로니에공원에서 열린 '제37회 마로니에 전국여성 백일장'이 성황리에 마무리 되었2019년 10월 11일 서울 종로구 마로니에공원에서 열린 '제37회 마로니에 전국여성 백일장'이 성황리에 마무리 되었</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card__content"><span class="date">2023.08.07</span>
+                <div class="img-wrap"><img src="../images/swipe_img3.jpg" alt></div>
+                <h3 class="title">제37회 마로니에 전국여성발명장 후원</h3>
+                <p class="desc">2019년 10월 11일 서울 종로구 마로니에공원에서 열린 '제37회 마로니에 전국여성 백일장'이 성황리에 마무리 되었2019년 10월 11일 서울 종로구 마로니에공원에서 열린 '제37회 마로니에 전국여성 백일장'이 성황리에 마무리 되었</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section><!-- //sc__news -->
+      <section class="sc__partner">
+        <div class="inner">
+          <div class="title__wrap"><span class="desc">일호재단과</span><br>
+            <h2 class="title">함께하는 파트너</h2>
+          </div>
+          <ul class="partner">
+            <li class="partner__item"><img src="../images/partner1.png" alt="서울특별시교육청"></li>
+            <li class="partner__item"><img src="../images/partner2.png" alt="한국아동복지협회"></li>
+            <li class="partner__item"><img src="../images/partner3.png" alt="대한약사회"></li>
+            <li class="partner__item"><img src="../images/partner4.png" alt="사단법인 물망초"></li>
+          </ul>
+        </div>
+      </section><!-- //sc__partner -->
+    </main>
   </div>
+  <footer id="footer" class="footer">
+    <div class="footer__inner">
+      <h2 class="footer-logo"><img src="../images/foot_logo.png" alt="일호재단"></h2>
+      <div class="footer__wrap">
+        <div class="footer__info">
+          <ul>
+            <li><strong>Address</strong> <span>서울시 동대문구 천호대로 64</span></li>
+            <li><strong>Contact</strong> <span>02-920-8329</span></li>
+          </ul>
+          <p class="copy">Copyright© SUSEOK CULTURAL FOUNDATION. All Rights Reserved.</p>
+        </div>
+        <div class="footer__link">
+          <ul>
+            <li><a href="">개인정보보호정책</a></li>
+            <li><a href="">이메일무단수집거부</a></li>
+          </ul>
+          <div class="footer__family"><a href="" class="btn-family">Family Site <i class="ico-plus"></i></a></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    $('.owl-carousel').owlCarousel({
+      loop: false,
+      center: true,
+      items: 3.6,
+      margin: 150,
+      dots: false,
+    })
+  </script>
 </body>
 
 </html>

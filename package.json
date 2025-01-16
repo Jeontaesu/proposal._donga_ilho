@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "gulp dev",
-    "build": "gulp build"
+    "build": "gulp build",
+    "deploy": "yarn build && gh-pages -d dist -b deploy"
   },
   "devDependencies": {
     "browser-sync": "^2.26.14",

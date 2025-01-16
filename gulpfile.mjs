@@ -1,88 +1,114 @@
-// Gulpfile.mjs
-import gulp from 'gulp';
+import gulp from "gulp";
 const { src, dest, series, parallel, watch } = gulp;
-import clean from 'gulp-clean';
-import htmlmin from 'gulp-htmlmin';
-import fileinclude from 'gulp-file-include';
-import * as sass from 'sass';
-import gulpSass from 'gulp-sass';
-import browserSync from 'browser-sync';
-import uglify from 'gulp-uglify';
-import cleanCSS from 'gulp-clean-css';
-import concat from 'gulp-concat';
-import rename from 'gulp-rename';
-import sourcemaps from 'gulp-sourcemaps';
-import imagemin from 'gulp-imagemin';
-import autoprefixer from 'gulp-autoprefixer';
-import htmlbeautify from 'gulp-html-beautify';
+import clean from "gulp-clean";
+import htmlmin from "gulp-htmlmin";
+import fileinclude from "gulp-file-include";
+import * as sass from "sass";
+import gulpSass from "gulp-sass";
+import browserSync from "browser-sync";
+import uglify from "gulp-uglify";
+import cleanCSS from "gulp-clean-css";
+import concat from "gulp-concat";
+import rename from "gulp-rename";
+import sourcemaps from "gulp-sourcemaps";
+import imagemin from "gulp-imagemin";
+import autoprefixer from "gulp-autoprefixer";
+import htmlbeautify from "gulp-html-beautify";
 
 const browserSyncInstance = browserSync.create();
 const sassCompiler = gulpSass(sass);
 
+const ROOT = "./src";
+const DEST = `./dist`;
+
+const PATH = {
+  HTML: `${ROOT}`,
+  SCSS: `${ROOT}/scss`,
+  JS: `${ROOT}/js`,
+  IMG: `${ROOT}/images`,
+  MARKUP: `${ROOT}/markup`,
+  INCLUDE: `${ROOT}/include`,
+  BUILD: {
+    BUILD_HTML: `${DEST}/html`,
+    BUILD_CSS: `${DEST}/css`,
+    BUILD_JS: `${DEST}/js`,
+    BUILD_IMG: `${DEST}/images`,
+    BUILD_MARKUP: `${DEST}/markup`,
+  },
+};
+
 // 'clean' 태스크
 function cleanTask() {
-  return src('dist', { read: false, allowEmpty: true })
-      .pipe(clean());
+  console.log("clean 실행 !!");
+  return src(`${DEST}`, { read: false, allowEmpty: true }) // dist 폴더를 삭제
+    .pipe(clean());
 }
 
 // HTML 파일 변환 작업
 function htmlTask() {
-  return src('src/*.html')
-      .pipe(fileinclude({ prefix: '@@', basepath: '@file' }))
-      .pipe(htmlmin({ collapseWhitespace: true }))
-      .pipe(htmlbeautify({ indent_size: 2 }))
-      .pipe(dest('dist'))
-      .pipe(browserSyncInstance.stream());
+  console.log("HTML 파일이 수정되었습니다."); // 로그 추가
+  return src(`${PATH.HTML}/**/*.html`)
+    .pipe(fileinclude({ prefix: "@@", basepath: PATH.INCLUDE })) // basepath 수정
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(rename({ dirname: "" }))
+    .pipe(htmlbeautify({ indent_size: 2 }))
+    .pipe(dest(PATH.BUILD.BUILD_HTML)) // HTML 파일을 dist/html에 저장
+    .pipe(browserSyncInstance.stream());
 }
 
 // SASS 파일 변환 작업
-function sassTask() {
-  return src('src/scss/**/*.scss')
-      .pipe(sourcemaps.init())
-      .pipe(sassCompiler().on('error', sassCompiler.logError))
-      .pipe(autoprefixer())
-      .pipe(cleanCSS())
-      .pipe(sourcemaps.write('.'))
-      .pipe(dest('dist/css'))
-      .pipe(browserSyncInstance.stream());
-}
+export const sassTask = () => {
+  return src(`${PATH.SCSS}/*.scss`).pipe(sourcemaps.init()).pipe(sassCompiler().on("error", sassCompiler.logError)).pipe(autoprefixer()).pipe(cleanCSS()).pipe(sourcemaps.write("./map")).pipe(dest(PATH.BUILD.BUILD_CSS)).pipe(browserSyncInstance.stream());
+};
 
 // 'js' 태스크
 function jsTask() {
-  return src('src/js/**/*.js')
-      .pipe(sourcemaps.init())
-      .pipe(concat('app.js'))
-      .pipe(uglify())
-      .pipe(rename({ suffix: '.min' }))
-      .pipe(sourcemaps.write('.'))
-      .pipe(dest('dist/js'));
+  console.log("js 실행 !!");
+  return src(`${PATH.JS}/*.js`)
+    .pipe(concat("app.js"))
+    .pipe(uglify())
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(sourcemaps.write("."))
+    .pipe(dest(PATH.BUILD.BUILD_JS))
+    .pipe(browserSyncInstance.stream());
 }
 
 // 'images' 태스크
 function imagesTask() {
-  return src('src/images/**/*')
-      .pipe(imagemin())
-      .pipe(dest('dist/images'));
+  return src(`${PATH.IMG}/**/*`).pipe(imagemin()).pipe(dest(PATH.BUILD.BUILD_IMG));
+}
+
+// markup 관련 파일 복사 태스크
+function markupTask() {
+  return src(`${PATH.MARKUP}/**`)
+    .pipe(dest(`${PATH.BUILD.BUILD_MARKUP}`))
+    .pipe(browserSyncInstance.stream());
 }
 
 // 빌드 태스크 정의
-const buildTask = parallel(htmlTask, sassTask, jsTask, imagesTask);
+const buildTask = parallel(htmlTask, sassTask, jsTask, imagesTask, markupTask);
 
 // 파일 변경 감지 및 브라우저 동기화
 function watchTask() {
-    watch('src/*.html', htmlTask);
-    watch('src/scss/**/*.scss', sassTask);
-    watch('src/js/**/*.js', jsTask);
-    watch('src/images/**/*', imagesTask);
+  console.log("watching 실행 !!");
+  watch([`${PATH.HTML}/**/*.html`], htmlTask);
+  watch([`${PATH.INCLUDE}/**/*.html`], htmlTask);
+  watch([`${PATH.SCSS}/**/*.scss`], sassTask);
+  watch([`${PATH.JS}/*.js`], jsTask);
+  watch(`${PATH.IMG}/**/*`, imagesTask);
+  watch(`${PATH.MARKUP}/**`, markupTask);
 }
 
 // 브라우저 동기화 및 서버 설정
-function serve() {
-    browserSyncInstance.init({
-        server: {
-            baseDir: 'dist'
-        }
-    });
+function serve(done) {
+  // done 매개변수 추가
+  console.log("server 실행 !!");
+  browserSyncInstance.init({
+    server: {
+      baseDir: `${DEST}`,
+    },
+  });
+  done(); // 비동기 작업 완료를 알림
 }
 
 // 'dev' 태스크 정의
@@ -93,7 +119,4 @@ export const dev = series(
 );
 
 // 'build' 태스크 정의
-export const build = series(
-  cleanTask,
-  buildTask
-);
+export const build = series(cleanTask, buildTask);

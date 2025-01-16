@@ -1,14 +1,16 @@
-<!-- src/index.html -->
-<!DOCTYPE html>
-<html lang="ko">
+<!doctype html>
+<html lang="kr">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Gulp 자동 변환 예제</title>
-    <link rel="stylesheet" href="css/style.css"> <!-- CSS 링크 -->
-    <script defer src="js/main.js"></script>
+  @@include('meta.html')
+  <title>동아 일호재단</title>
+  @@include('resource.html')
 </head>
+
 <body>
-    <h1>환영합니다!!!!!!!!!!</h1>
-    @@include('html/include/header.html') <!-- 다른 HTML 파일 포함 -->
+  <div id="wrap" class="main1">
+    @@include('header.html', { "class": "" })
+    2222
+    @@include('footer.html', { "class": "" })
+  </div>
 </body>
-</html>

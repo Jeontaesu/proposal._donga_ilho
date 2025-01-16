@@ -29,5 +29,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "gsap": "^3.12.7",
+    "gulp-fonter": "^0.3.0",
+    "gulp-ttf2woff2": "^5.0.0",
+    "jquery": "^3.7.1",
+    "owl.carousel": "^2.3.4",
+    "swiper": "^11.2.1"
+  }
 }

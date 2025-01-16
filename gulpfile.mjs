@@ -14,6 +14,8 @@ import sourcemaps from "gulp-sourcemaps";
 import imagemin from "gulp-imagemin";
 import autoprefixer from "gulp-autoprefixer";
 import htmlbeautify from "gulp-html-beautify";
+import fonter from "gulp-fonter";
+import ttf2woff2 from "gulp-ttf2woff2";
 
 const browserSyncInstance = browserSync.create();
 const sassCompiler = gulpSass(sass);
@@ -28,12 +30,14 @@ const PATH = {
   IMG: `${ROOT}/images`,
   MARKUP: `${ROOT}/markup`,
   INCLUDE: `${ROOT}/include`,
+  FONTS: `${ROOT}/fonts`, // 폰트 소스 경로 추가
   BUILD: {
     BUILD_HTML: `${DEST}/html`,
     BUILD_CSS: `${DEST}/css`,
     BUILD_JS: `${DEST}/js`,
     BUILD_IMG: `${DEST}/images`,
     BUILD_MARKUP: `${DEST}/markup`,
+    BUILD_FONTS: `${DEST}/fonts`, // 폰트 빌드 경로 추가
   },
 };
 
@@ -78,6 +82,22 @@ function imagesTask() {
   return src(`${PATH.IMG}/**/*`).pipe(imagemin()).pipe(dest(PATH.BUILD.BUILD_IMG));
 }
 
+// 폰트 태스크 추가
+function fontsTask() {
+  console.log("fonts 실행 !!");
+  return src(`${PATH.FONTS}/*.ttf`)
+    .pipe(
+      fonter({
+        formats: ["woff"],
+      })
+    )
+    .pipe(dest(PATH.BUILD.BUILD_FONTS))
+    .pipe(src(`${PATH.FONTS}/*.ttf`))
+    .pipe(ttf2woff2())
+    .pipe(dest(PATH.BUILD.BUILD_FONTS))
+    .pipe(browserSyncInstance.stream());
+}
+
 // markup 관련 파일 복사 태스크
 function markupTask() {
   return src(`${PATH.MARKUP}/**`)
@@ -86,7 +106,7 @@ function markupTask() {
 }
 
 // 빌드 태스크 정의
-const buildTask = parallel(htmlTask, sassTask, jsTask, imagesTask, markupTask);
+const buildTask = parallel(htmlTask, sassTask, jsTask, imagesTask, markupTask, fontsTask);
 
 // 파일 변경 감지 및 브라우저 동기화
 function watchTask() {
@@ -97,6 +117,7 @@ function watchTask() {
   watch([`${PATH.JS}/*.js`], jsTask);
   watch(`${PATH.IMG}/**/*`, imagesTask);
   watch(`${PATH.MARKUP}/**`, markupTask);
+  watch(`${PATH.FONTS}/**/*`, fontsTask);
 }
 
 // 브라우저 동기화 및 서버 설정

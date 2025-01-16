@@ -1,0 +1,26 @@
+/* 공통클래스 */
+.blind {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+}
+.img-wrap {
+  display: block;
+}
+.sc__bg {
+  display: inline-flex;
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+.sc__area {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}

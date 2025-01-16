@@ -1,15 +1,16 @@
 @charset "UTF-8";
 
-@import 'base/reset';
-@import 'base/fonts';
+// base
+@import "base/reset";
+@import "base/fonts";
+@import "base/common";
 
-@import 'utils/mixins';
-@import 'utils/variables';
-
+@import "utils/mixins";
+@import "utils/variables";
 
 // layout
-@import 'include/header';
-@import 'include/footer';
+@import "include/header";
+@import "include/footer";
 
-@import 'pages/main';
-
+// page
+@import "pages/main";

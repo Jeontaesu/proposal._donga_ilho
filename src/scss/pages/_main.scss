@@ -1,18 +1,23 @@
 /* sc__ilho */
 .sc__ilho {
-  position: fixed;
+  position: sticky;
   top: 0;
   z-index: 1;
   width: 100%;
   height: 100%;
+  &.--static {
+    position: static;
+  }
+  .sc__area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .ilhoFoundation {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -65%);
     display: flex;
     flex-direction: column;
     align-items: center;
+    @include animation(deco3, 1s, 0s, 1);
     &:before {
       content: "";
       position: absolute;
@@ -21,6 +26,7 @@
       background: url(../../images/i1.png) center no-repeat;
       height: 186px;
       width: 165px;
+      @include animation(deco, 1s, 0s, 1);
     }
     &:after {
       content: "";
@@ -30,19 +36,19 @@
       background: url(../../images/i2.png) center no-repeat;
       width: 145px;
       height: 204px;
+      @include animation(deco2, 1s, 0s, 1);
     }
   }
 }
 /* section__contents */
 .sc {
   position: relative;
-  z-index: 10;
-  margin-top: 80vh;
   /* sc__start */
   &__start {
     position: relative;
     overflow: hidden;
     width: 100%;
+    z-index: 10;
     .sc__area {
       &-title {
         position: absolute;
@@ -50,6 +56,11 @@
         left: 50%;
         transform: translate(-50%, -68%);
         text-align: center;
+        .titleDeco {
+          img {
+            @include animation(deco3, 1s, 0s, 1);
+          }
+        }
         .title {
           position: relative;
           margin-top: 32px;
@@ -76,51 +87,63 @@
           line-height: 34px;
         }
       }
+      // .obj {
+      //   opacity: 0;
+      // }
       .obj1 {
         position: absolute;
-        left: 0;
-        top: 6%;
+        left: -8%;
+        top: 5%;
+        @include animation(deco, 1s, 0s, 1);
       }
       .obj2 {
         position: absolute;
-        right: 0;
-        bottom: 0;
+        right: -10%;
+        bottom: -2%;
+        @include animation(deco2, 1s, 0s, 1);
       }
       .obj3 {
         position: absolute;
         left: 3%;
         bottom: -6.3%;
         z-index: 1;
+        @include animation(deco, 1s, 0s, 1);
       }
       .obj4 {
         position: absolute;
-        left: -1%;
+        left: -13%;
         bottom: -20%;
+        @include animation(deco3, 1s, 0s, 1);
       }
       .deco1 {
         position: absolute;
         left: 3%;
         top: 43%;
+        @include animation(deco, 1s, 0s, 1);
       }
       .deco2 {
         position: absolute;
         left: 36%;
         top: 15%;
+        @include animation(deco2, 1s, 0s, 1);
       }
       .deco3 {
         position: absolute;
         right: 25%;
         top: 18%;
+        @include animation(deco, 1s, 0s, 1);
       }
       .deco4 {
         position: absolute;
         right: 0px;
         top: 15%;
+        @include animation(deco2, 1s, 0s, 1);
       }
       .deco5 {
         position: absolute;
         right: 25%;
         bottom: 14%;
+        @include animation(deco, 1s, 0s, 1);
       }
     }
   }
@@ -128,9 +151,18 @@
   &__business {
     position: relative;
     width: 100%;
-    overflow: hidden;
-    transform: translateY(-18%);
+    // overflow: hidden;
+    // transform: translateY(-18%);
     z-index: 10;
+    &:before {
+      content: "";
+      position: absolute;
+      top: -192px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(../../images/bg3.png) center no-repeat;
+    }
     .sc__area {
       &-title {
         margin-top: 326px;
@@ -139,6 +171,13 @@
         align-items: center;
         text-align: center;
         gap: 58px;
+        transform: translateY(20%);
+        opacity: 0;
+        transition: 0.8s;
+        &.act {
+          opacity: 1;
+          transform: translateY(0);
+        }
         .desc {
           font-size: 40px;
           font-weight: 700;
@@ -156,30 +195,43 @@
         position: absolute;
         left: 18%;
         top: 14%;
+        @include animation(deco, 1s, 0s, 1);
       }
       .deco2 {
         position: absolute;
         right: 0;
         top: 15%;
+        @include animation(deco2, 1s, 0s, 1);
       }
       .deco3 {
         position: absolute;
         left: 10%;
         bottom: 10%;
+        @include animation(deco3, 1s, 0s, 1);
       }
       .deco4 {
         position: absolute;
         right: 15%;
         bottom: 18%;
+        @include animation(deco2, 1s, 0s, 1);
       }
     }
   }
   /* sc__backup */
   &__backup {
     position: relative;
-    overflow: hidden;
+    // overflow: hidden;
     z-index: 10;
-    transform: translateY(-14%);
+    // transform: translateY(-14%);
+    &:before {
+      content: "";
+      position: absolute;
+      top: -180px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(../../images/bg4.png) center no-repeat;
+    }
     .backup__list {
       position: absolute;
       top: 0;
@@ -197,6 +249,13 @@
         align-items: center;
         justify-content: space-between;
         height: 648px;
+        transform: translateY(20%);
+        opacity: 0;
+        transition: 0.8s;
+        &.act {
+          opacity: 1;
+          transform: translateY(0);
+        }
         .obj {
           width: 600px;
           position: relative;
@@ -215,20 +274,24 @@
             }
           }
           .obj {
+            @include animation(deco3, 1s, 0s, 1);
             .obj2 {
               position: absolute;
               top: 10%;
               right: 15%;
+              @include animation(deco, 1s, 0s, 1);
             }
             .obj3 {
               position: absolute;
               top: 30%;
               right: 2%;
+              @include animation(deco2, 1s, 0s, 1);
             }
             .obj4 {
               position: absolute;
               bottom: 2%;
               right: 0;
+              @include animation(deco3, 1s, 0s, 1);
             }
           }
         }
@@ -247,15 +310,18 @@
             }
           }
           .obj {
+            @include animation(deco3, 1s, 0s, 1);
             .obj2 {
               position: absolute;
               top: 10%;
               right: 15%;
+              @include animation(deco2, 1s, 0s, 1);
             }
             .obj3 {
               position: absolute;
-              top: 18%;
+              top: 60%;
               right: 25%;
+              @include animation(deco3, 1s, 0s, 1);
             }
           }
         }
@@ -278,21 +344,25 @@
               position: absolute;
               bottom: 10%;
               left: 0;
+              @include animation(deco3, 1s, 0s, 1);
             }
             .obj2 {
               position: absolute;
               top: 35%;
               left: -15%;
+              @include animation(deco, 1s, 0s, 1);
             }
             .obj3 {
               position: absolute;
               top: 50%;
               right: 20%;
+              @include animation(deco2, 1s, 0s, 1);
             }
             .obj4 {
               position: absolute;
               bottom: 8%;
               right: 12%;
+              @include animation(deco3, 1s, 0s, 1);
             }
           }
         }
@@ -364,18 +434,42 @@
   /* sc__news */
   &__news {
     position: relative;
-    overflow: hidden;
+    // overflow: hidden;
     z-index: 10;
-    transform: translateY(-70%);
-
+    // transform: translateY(-70%);
+    &:before {
+      content: "";
+      position: absolute;
+      top: -230px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(../../images/bg5.png) center no-repeat;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -49px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(../../images/bg5.png) center no-repeat;
+      z-index: -1;
+    }
     .sc__area {
       z-index: 10;
       .sc__news-title {
         position: absolute;
         top: 20%;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, 20%);
         text-align: center;
+        // opacity: 0;
+        // transition: 0.8s;
+        // &.act {
+        //   opacity: 1;
+        //   transform: translate(-50%, 0);
+        // }
         .desc {
           margin-top: 27px;
           font-size: 40px;
@@ -389,6 +483,13 @@
         top: 50%;
         left: 0;
         right: 0;
+        // opacity: 0;
+        // transition: 0.8s;
+        // transform: translateY(20%);
+        // &.act {
+        //   opacity: 1;
+        //   transform: translateY(0);
+        // }
         .owl-stage-outer {
           overflow: visible;
         }
@@ -477,9 +578,7 @@
     padding: 140px 0;
     position: relative;
     z-index: 10;
-    overflow: hidden;
     background: #fff;
-    transform: translateY(-250%);
     .inner {
       width: 1600px;
       margin: 0 auto;

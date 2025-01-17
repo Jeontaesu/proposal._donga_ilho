@@ -1,0 +1,50 @@
+@mixin keyframes($name){
+  @keyframes #{$name}{
+    @content;
+  }
+}
+
+@mixin animation($keyframe-name, $duration, $delay, $steps: 1, $direction: end, $count: infinite){
+  animation-name: #{$keyframe-name};
+  animation-duration: $duration;
+  animation-delay: $delay;
+  animation-timing-function: steps($steps, $direction);
+  animation-iteration-count: $count;
+}
+
+
+@include keyframes(deco) {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  50% {
+    transform: translateX(10%) rotate(20deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+}
+
+@include keyframes(deco2) {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  50% {
+    transform: translateX(10%) rotate(-20deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+}
+
+@include keyframes(deco3) {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  50% {
+    transform: translateX(5%) rotate(-5deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+}

@@ -1,3 +1,7 @@
+기존 gulpfile.mjs내용
+
+
+
 import gulp from "gulp";
 const { src, dest, series, parallel, watch } = gulp;
 import clean from "gulp-clean";
@@ -15,6 +19,7 @@ import imagemin from "gulp-imagemin";
 import autoprefixer from "gulp-autoprefixer";
 import htmlbeautify from "gulp-html-beautify";
 import fonter from "gulp-fonter";
+import ttf2woff2 from "gulp-ttf2woff2";
 
 const browserSyncInstance = browserSync.create();
 const sassCompiler = gulpSass(sass);
@@ -68,7 +73,6 @@ export const sassTask = () => {
 function jsTask() {
   console.log("js 실행 !!");
   return src(`${PATH.JS}/*.js`)
-    .pipe(sourcemaps.init())
     .pipe(concat("app.js"))
     .pipe(uglify())
     .pipe(rename({ suffix: ".min" }))
@@ -77,28 +81,23 @@ function jsTask() {
     .pipe(browserSyncInstance.stream());
 }
 
-// 원본 main.js 파일 복사 작업
-function copyMainJsTask() {
-  console.log("main.js 파일 복사 실행 !!");
-  return src(`${PATH.JS}/main.js`) // 원본 파일 경로
-    .pipe(dest(PATH.BUILD.BUILD_JS)); // 빌드 경로
-}
-
 // 'images' 태스크
 function imagesTask() {
   return src(`${PATH.IMG}/**/*`).pipe(imagemin()).pipe(dest(PATH.BUILD.BUILD_IMG));
 }
 
 // 폰트 태스크 추가
-// 폰트 태스크 추가
 function fontsTask() {
   console.log("fonts 실행 !!");
-  return src(`${PATH.FONTS}/*.woff2`)
+  return src(`${PATH.FONTS}/*.ttf`)
     .pipe(
       fonter({
         formats: ["woff"],
       })
     )
+    .pipe(dest(PATH.BUILD.BUILD_FONTS))
+    .pipe(src(`${PATH.FONTS}/*.ttf`))
+    .pipe(ttf2woff2())
     .pipe(dest(PATH.BUILD.BUILD_FONTS))
     .pipe(browserSyncInstance.stream());
 }
@@ -111,7 +110,7 @@ function markupTask() {
 }
 
 // 빌드 태스크 정의
-const buildTask = parallel(htmlTask, sassTask, jsTask, imagesTask, markupTask, fontsTask, copyMainJsTask);
+const buildTask = parallel(htmlTask, sassTask, jsTask, imagesTask, markupTask, fontsTask);
 
 // 파일 변경 감지 및 브라우저 동기화
 function watchTask() {
@@ -131,8 +130,7 @@ function serve(done) {
   console.log("server 실행 !!");
   browserSyncInstance.init({
     server: {
-      baseDir: `${DEST}`, // dist 디렉터리를 서버의 루트로 설정
-      directory: true, // 디렉터리 브라우징 활성화
+      baseDir: `${DEST}`,
     },
   });
   done(); // 비동기 작업 완료를 알림

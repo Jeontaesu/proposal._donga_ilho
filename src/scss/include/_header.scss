@@ -4,13 +4,17 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 70px;
   z-index: 100;
-  &--hide {
+  transition: all 0.3s;
+  &.--hide {
     transform: translateY(-100%);
   }
-  &--fixed {
+  &.--fixed {
     position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.7);
   }
   .header__inner {
     position: relative;

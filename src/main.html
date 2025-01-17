@@ -25,6 +25,7 @@
         </div>
       </div>
     </section>
+
     <main class="sc">
       <section class="sc__start">
         <div class="sc__bg">
@@ -43,16 +44,16 @@
               더 나은 사회발전을 위해 노력하겠습니다.
             </p>
           </div>
-          <i class="obj1">
+          <i class="obj obj1">
             <img src="../images/obj1.png" alt>
           </i>
-          <i class="obj2">
+          <i class="obj obj2">
             <img src="../images/obj2.png" alt>
           </i>
-          <i class="obj3">
+          <i class="obj obj3">
             <img src="../images/obj3.png" alt>
           </i>
-          <i class="obj4">
+          <i class="obj obj4">
             <img src="../images/obj4.png" alt>
           </i>
           <i class="deco1">
@@ -80,7 +81,7 @@
           <img src="../images/bg3.png" alt>
         </div>
         <div class="sc__area">
-          <div class="sc__area-title">
+          <div class="sc__area-title" data-js="slideup">
             <h2>
               <span class="img-wrap"><img src="../images/business.png" alt></span>
               <span class="img-wrap"><img src="../images/introduction.png" alt></span>
@@ -111,7 +112,7 @@
           <img src="../images/bg4.png" alt>
         </div>
         <ul class="backup__list">
-          <li class="backup__item">
+          <li class="backup__item" data-js="slideup">
             <div class="obj">
               <i class="obj1"><img src="../images/i13.png" alt></i>
               <i class="obj2"><img src="../images/i14.png" alt></i>
@@ -134,7 +135,7 @@
               </i>
             </div>
           </li>
-          <li class="backup__item">
+          <li class="backup__item" data-js="slideup">
             <div class="obj">
               <i class="obj1"><img src="../images/i19.png" alt></i>
               <i class="obj2"><img src="../images/i20.png" alt></i>
@@ -156,7 +157,7 @@
               </i>
             </div>
           </li>
-          <li class="backup__item">
+          <li class="backup__item" data-js="slideup">
             <div class="obj">
               <i class="obj1"><img src="../images/i23.png" alt></i>
               <i class="obj2"><img src="../images/i24.png" alt></i>
@@ -298,13 +299,21 @@
   </div>
 
   <script>
-    $('.owl-carousel').owlCarousel({
-      loop: false,
-      center: true,
-      items: 3.6,
-      margin: 150,
-      dots: false,
-    })
+    let lastScroll = 0;
+    $(window).scroll(function () {
+      curr = $(this).scrollTop();
+      (curr > 0) ? $('header').addClass('--fixed') : $('header').removeClass('--fixed');
 
+      if (curr > lastScroll) { //내릴때
+        $('.header').addClass('--hide');
+        $('.sub-tab').removeClass('--fixed');
+        $('.sub-tab2').removeClass('--fixed');
+      } else {
+        $('.header').removeClass('--hide');
+        $('.sub-tab').addClass('--fixed');
+        $('.sub-tab2').addClass('--fixed');
+      }
+      lastScroll = curr; //조건비교 후 따라옴
+    });
   </script>
 </body>
